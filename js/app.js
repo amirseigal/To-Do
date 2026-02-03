@@ -19,6 +19,14 @@ function renderTasks() {
         const list = document.createElement("li");
         list.textContent = `${tasks[i]}`;
         taskList.append(list);
+        const btn = document.createElement("button");
+        btn.textContent = "Delete";
+        btn.addEventListener("click", function() {
+            localStorage.removeItem(tasks.splice(i, 1));
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            renderTasks();
+        })
+        list.append(btn);
 };
     
     
